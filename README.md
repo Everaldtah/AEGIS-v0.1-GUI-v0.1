@@ -55,12 +55,34 @@ A modern web-based GUI for AEGIS - the safe security research sandbox.
 
 ## 📦 Installation
 
-### Prerequisites
+### Option 1: VM Deployment (Recommended for Testing)
+
+#### Vagrant + VirtualBox (Easiest - 5 min)
+```bash
+git clone https://github.com/Everaldtah/AEGIS-v0.1-GUI-v0.1.git
+cd AEGIS-v0.1-GUI-v0.1
+vagrant up
+```
+Access at: http://localhost:5173
+
+#### Custom ISO
+```bash
+sudo ./create-iso.sh
+# Creates bootable ISO: aegis-studio-0.1.0.amd64.iso
+```
+
+See [QUICKSTART-VM.md](./QUICKSTART-VM.md) for all VM options.
+
+---
+
+### Option 2: Local Development
+
+#### Prerequisites
 - Rust 1.93+
 - Node.js 18+
 - AEGIS v0.1 binaries (aegiscc, aegis-sandbox, aegisfuzz)
 
-### Quick Start
+#### Quick Start
 
 1. **Clone the repository:**
 ```bash

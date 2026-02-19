@@ -1,0 +1,56 @@
+version: '3.8'
+
+services:
+  # AEGIS Studio Backend
+  aegis-backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: aegis-studio-backend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ../AEGIS VERSION 2.0:/aegis:ro
+    environment:
+      - RUST_LOG=info
+    restart: unless-stopped
+    networks:
+      - aegis-network
+
+  # AEGIS Studio Frontend
+  aegis-frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: aegis-studio-frontend
+    ports:
+      - "5173:5173"
+    depends_on:
+      - aegis-backend
+    environment:
+      - VITE_API_BASE_URL=http://localhost:3000
+    restart: unless-stopped
+    networks:
+      - aegis-network
+
+  # Nginx Reverse Proxy
+  nginx:
+    image: nginx:alpine
+    container_name: aegis-studio-nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+    depends_on:
+      - aegis-frontend
+      - aegis-backend
+    restart: unless-stopped
+    networks:
+      - aegis-network
+
+networks:
+  aegis-network:
+    driver: bridge
+
+volumes:
+  aegis-data:
