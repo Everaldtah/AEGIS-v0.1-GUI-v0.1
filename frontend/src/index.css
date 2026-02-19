@@ -1,0 +1,66 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom AEGIS Studio Styles */
+:root {
+  --aegis-primary: #3b82f6;
+  --aegis-secondary: #10b981;
+  --aegis-danger: #ef4444;
+  --aegis-warning: #f59e0b;
+  --aegis-dark: #1e293b;
+  --aegis-darker: #0f172a;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', system-ui, -apple-system, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background-color: var(--aegis-darker);
+  color: #e2e8f0;
+}
+
+/* Scrollbar styles */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #1e293b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #475569;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+/* Monaco Editor container */
+.monaco-editor-container {
+  border-radius: 0.5rem;
+  overflow: hidden;
+}
+
+/* Custom utilities */
+@layer components {
+  .aegis-card {
+    @apply bg-slate-800 rounded-lg border border-slate-700 p-4;
+  }
+
+  .aegis-btn-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+  }
+
+  .aegis-btn-secondary {
+    @apply bg-slate-700 hover:bg-slate-600 text-white font-medium py-2 px-4 rounded-lg transition-colors;
+  }
+
+  .aegis-input {
+    @apply bg-slate-900 border border-slate-700 rounded-lg px-3 py-2 text-white focus:outline-none focus:ring-2 focus:ring-blue-500;
+  }
+}

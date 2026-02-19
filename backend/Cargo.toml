@@ -1,0 +1,31 @@
+[package]
+name = "aegis-studio-backend"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+# Web framework
+axum = "0.7"
+tokio = { version = "1", features = ["full"] }
+tower = "0.4"
+tower-http = { version = "0.5", features = ["cors", "fs"] }
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Async utilities
+futures = "0.3"
+
+# Logging
+tracing = "0.1"
+tracing-subscriber = { version = "0.3", features = ["env-filter"] }
+
+# UUID generation - use older compatible version
+uuid = { version = "=1.6.1", features = ["v4", "serde"] }
+
+# Date/time - use older compatible version
+chrono = { version = "=0.4.34", features = ["serde", "clock"], default-features = false }
+
+# HTTP client
+reqwest = { version = "0.11", features = ["json"] }
